@@ -12,12 +12,18 @@ let specialSymbols = ['(', '[', '{', '"', "'", '`'];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
 
-textArea.addEventListener('keyup', function(e) {
+textArea.addEventListener('keydown', function(e) {
     for (let i = 0; i < specialSymbols.length; i++) {
         if (e.key === specialSymbols[i]) {
             let a = textArea.selectionStart;
 
-            textArea.value = textArea.value.slice(0, a) + specialSymbolsReverse[i] + textArea.value.slice(a);
+            let b = textArea.selectionEnd;
+
+            textArea.value = textArea.value.slice(0, a)
+                + textArea.value.slice(a, b)
+                + specialSymbolsReverse[i]
+                + textArea.value.slice(b);
+
             textArea.selectionStart = a;
             textArea.selectionEnd = a;
         }
