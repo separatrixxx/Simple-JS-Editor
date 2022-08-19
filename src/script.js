@@ -1,7 +1,19 @@
 document.getElementById('btn').addEventListener('click', () => {
     let str = document.getElementById('textarea').value;
 
-    let sayHi = new Function(str);
+    let runCode = new Function(str);
 
-    sayHi()
+    runCode()
+})
+
+let specialSymbols = ['(', '[', '{', '"', "'"];
+let specialSymbolsReverse = [')', ']', '}', '"', "'", '*'];
+
+document.getElementById('textarea').addEventListener('keyup', function(e) {
+    for (let i = 0; i < specialSymbols.length; i++) {
+        if (e.key === specialSymbols[i]) {
+            document.getElementById('textarea').value =
+                document.getElementById('textarea').value + specialSymbolsReverse[i];
+        }
+    }
 })
