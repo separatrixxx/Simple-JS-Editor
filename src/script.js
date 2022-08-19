@@ -8,8 +8,8 @@ document.getElementById('btn').addEventListener('click', () => {
     runCode()
 })
 
-let specialSymbols = ['(', '[', '{', '"', "'"];
-let specialSymbolsReverse = [')', ']', '}', '"', "'", '*'];
+let specialSymbols = ['(', '[', '{', '"', "'", '`'];
+let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
 
 textArea.addEventListener('keyup', function(e) {
@@ -18,6 +18,23 @@ textArea.addEventListener('keyup', function(e) {
             let a = textArea.selectionStart;
 
             textArea.value = textArea.value.slice(0, a) + specialSymbolsReverse[i] + textArea.value.slice(a);
+            textArea.selectionStart = a;
+            textArea.selectionEnd = a;
+        }
+    }
+})
+
+textArea.addEventListener('keydown', function(e) {
+    if (e.key === 'Backspace') {
+        let a = textArea.selectionStart;
+
+        if ((textArea.value.slice(a-1, a) === '(' && textArea.value.slice(a, a+1) === ')')
+            || (textArea.value.slice(a-1, a) === '[' && textArea.value.slice(a, a+1) === ']')
+            || (textArea.value.slice(a-1, a) === '{' && textArea.value.slice(a, a+1) === '}')
+            || (textArea.value.slice(a-1, a) === '"' && textArea.value.slice(a, a+1) === '"')
+            || (textArea.value.slice(a-1, a) === "'" && textArea.value.slice(a, a+1) === "'")
+            || (textArea.value.slice(a-1, a) === '`' && textArea.value.slice(a, a+1) === '``')) {
+            textArea.value = textArea.value.slice(0, a - 1) + textArea.value.slice(a);
             textArea.selectionStart = a;
             textArea.selectionEnd = a;
         }
