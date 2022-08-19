@@ -11,14 +11,15 @@ document.getElementById('btn').addEventListener('click', () => {
 let specialSymbols = ['(', '[', '{', '"', "'"];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '*'];
 
+
 textArea.addEventListener('keyup', function(e) {
     for (let i = 0; i < specialSymbols.length; i++) {
         if (e.key === specialSymbols[i]) {
-            document.getElementById('textarea').value =
-                document.getElementById('textarea').value + specialSymbolsReverse[i];
+            let a = textArea.selectionStart;
 
-            textArea.selectionStart = textArea.value.length - 1;
-            textArea.selectionEnd = textArea.value.length - 1;
+            textArea.value = textArea.value.slice(0, a) + specialSymbolsReverse[i] + textArea.value.slice(a);
+            textArea.selectionStart = a;
+            textArea.selectionEnd = a;
         }
     }
 })
