@@ -5,6 +5,8 @@ document.getElementById('btn').addEventListener('click', () => {
 
     let runCode = new Function(str);
 
+    let words = str.split(' ');
+
     runCode()
 })
 
@@ -25,11 +27,11 @@ textArea.addEventListener('keydown', function ssCheck(e) {
 
             textArea.selectionStart = a;
             textArea.selectionEnd = a;
+
+            break;
         }
     }
-})
 
-textArea.addEventListener('keydown', function(e) {
     if (e.key === 'Backspace') {
         let a = textArea.selectionStart;
 
@@ -44,9 +46,7 @@ textArea.addEventListener('keydown', function(e) {
             textArea.selectionEnd = a;
         }
     }
-})
 
-textArea.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         let a = textArea.selectionStart;
 
