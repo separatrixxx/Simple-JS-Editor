@@ -11,8 +11,7 @@ document.getElementById('btn').addEventListener('click', () => {
 let specialSymbols = ['(', '[', '{', '"', "'", '`'];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
-
-textArea.addEventListener('keydown', function(e) {
+textArea.addEventListener('keydown', function ssCheck(e) {
     for (let i = 0; i < specialSymbols.length; i++) {
         if (e.key === specialSymbols[i]) {
             let a = textArea.selectionStart;
@@ -41,6 +40,20 @@ textArea.addEventListener('keydown', function(e) {
             || (textArea.value.slice(a-1, a) === "'" && textArea.value.slice(a, a+1) === "'")
             || (textArea.value.slice(a-1, a) === '`' && textArea.value.slice(a, a+1) === '``')) {
             textArea.value = textArea.value.slice(0, a - 1) + textArea.value.slice(a);
+            textArea.selectionStart = a;
+            textArea.selectionEnd = a;
+        }
+    }
+})
+
+textArea.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        let a = textArea.selectionStart;
+
+        if ((textArea.value.slice(a - 1, a) === '[' && textArea.value.slice(a, a + 1) === ']')
+            || (textArea.value.slice(a - 1, a) === '(' && textArea.value.slice(a, a + 1) === ')')
+            || (textArea.value.slice(a - 1, a) === '{' && textArea.value.slice(a, a + 1) === '}')) {
+            textArea.value = textArea.value.slice(0, a) + '\n' + textArea.value.slice(a);
             textArea.selectionStart = a;
             textArea.selectionEnd = a;
         }
