@@ -37,6 +37,10 @@ body::-webkit-scrollbar-thumb {
     left: 0;
 }
 
+#textarea.err {
+    color: red;
+}
+
 #textarea.color_change {
     color: aqua;
 }
