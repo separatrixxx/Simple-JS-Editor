@@ -5,13 +5,21 @@ document.getElementById('btn').addEventListener('click', () => {
 
     let runCode = new Function(str);
 
-    runCode();
+    textArea.classList.remove('err');
+
+    try {
+        runCode();
+    } catch (err) {
+        textArea.classList.add('err');
+        alert(err);
+    }
 })
 
 let specialSymbols = ['(', '[', '{', '"', "'", '`'];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
 textArea.addEventListener('keydown', function ssCheck(e) {
+    textArea.classList.remove('err');
     for (let i = 0; i < specialSymbols.length; i++) {
         if (e.key === specialSymbols[i]) {
             let a = textArea.selectionStart;
