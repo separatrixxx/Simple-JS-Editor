@@ -5,8 +5,6 @@ document.getElementById('btn').addEventListener('click', () => {
 
     let runCode = new Function(str);
 
-    let words = str.split(' ');
-
     runCode()
 })
 
