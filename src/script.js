@@ -20,7 +20,7 @@ let specialSymbols = ['(', '[', '{', '"', "'", '`'];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
 let nowStr = 1;
-let activeStr = ['1'];
+let activeStr = ['1\n', '2'];
 
 textArea.addEventListener('keydown', function ssCheck(e) {
     textArea.classList.remove('err');
@@ -73,29 +73,34 @@ textArea.addEventListener('keydown', function ssCheck(e) {
     }
 })
 
-textArea.addEventListener('keyup', function ssCheck(e) {
-    if (textArea.value.split('\n').length >= nowStr) {
-        nowStr = textArea.value.split('\n').length;
+// textArea.addEventListener('keydown', function ssCheck(e) {
+//     if (textArea.value.split('\n').length >= nowStr) {
+//         nowStr = textArea.value.split('\n').length;
+//
+//         if (nowStr !== 1) {
+//             activeStr.push('\n');
+//             activeStr.push(nowStr);
+//         }
+//     } else {
+//         activeStr.pop();
+//         activeStr.pop();
+//         nowStr = textArea.value.split('\n').length;
+//     }
+//
+//     let activeStrStr = '';
+//
+//     for (let val of activeStr) {
+//         activeStrStr = activeStrStr + val;
+//     }
+//
+//     textArea2.value = activeStrStr;
+//
+//     textArea2.scrollTop = 100000;
+// })
+//
+// textArea2.value = '1\n2';
 
-        if (nowStr !== 1) {
-            activeStr.push('\n');
-            activeStr.push(nowStr);
-        }
-    } else {
-        activeStr.pop();
-        activeStr.pop();
-        nowStr = textArea.value.split('\n').length;
-    }
 
-    let activeStrStr = '';
+textArea.addEventListener('keydown', function ssCheck(e) {
 
-    for (let val of activeStr) {
-        activeStrStr = activeStrStr + val;
-    }
-
-    textArea2.value = activeStrStr;
-
-    textArea2.scrollTop(textArea2[0].scrollHeight);
 })
-
-textArea2.value = activeStr;
