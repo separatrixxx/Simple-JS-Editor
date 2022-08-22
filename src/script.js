@@ -19,7 +19,10 @@ let specialSymbols = ['(', '[', '{', '"', "'", '`'];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
 textArea.addEventListener('keydown', function ssCheck(e) {
+
     textArea.classList.remove('err');
+    let a = 0;
+
     for (let i = 0; i < specialSymbols.length; i++) {
         if (e.key === specialSymbols[i]) {
             let a = textArea.selectionStart;
@@ -39,7 +42,7 @@ textArea.addEventListener('keydown', function ssCheck(e) {
     }
 
     if (e.key === 'Backspace') {
-        let a = textArea.selectionStart;
+        a = textArea.selectionStart;
 
         if ((textArea.value.slice(a-1, a) === '(' && textArea.value.slice(a, a+1) === ')')
             || (textArea.value.slice(a-1, a) === '[' && textArea.value.slice(a, a+1) === ']')
@@ -54,7 +57,7 @@ textArea.addEventListener('keydown', function ssCheck(e) {
     }
 
     if (e.key === 'Enter') {
-        let a = textArea.selectionStart;
+        a = textArea.selectionStart;
 
         if ((textArea.value.slice(a - 1, a) === '[' && textArea.value.slice(a, a + 1) === ']')
             || (textArea.value.slice(a - 1, a) === '(' && textArea.value.slice(a, a + 1) === ')')
