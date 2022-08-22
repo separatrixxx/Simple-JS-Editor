@@ -1,4 +1,5 @@
 let textArea = document.getElementById('textarea');
+let textArea2 = document.getElementById('textarea2');
 
 document.getElementById('btn').addEventListener('click', () => {
     let str = document.getElementById('textarea').value;
@@ -18,9 +19,12 @@ document.getElementById('btn').addEventListener('click', () => {
 let specialSymbols = ['(', '[', '{', '"', "'", '`'];
 let specialSymbolsReverse = [')', ']', '}', '"', "'", '`'];
 
-textArea.addEventListener('keydown', function ssCheck(e) {
+let nowStr = 1;
+let activeStr = ['1'];
 
+textArea.addEventListener('keydown', function ssCheck(e) {
     textArea.classList.remove('err');
+
     let a = 0;
 
     for (let i = 0; i < specialSymbols.length; i++) {
@@ -68,3 +72,30 @@ textArea.addEventListener('keydown', function ssCheck(e) {
         }
     }
 })
+
+textArea.addEventListener('keyup', function ssCheck(e) {
+    if (textArea.value.split('\n').length >= nowStr) {
+        nowStr = textArea.value.split('\n').length;
+
+        if (nowStr !== 1) {
+            activeStr.push('\n');
+            activeStr.push(nowStr);
+        }
+    } else {
+        activeStr.pop();
+        activeStr.pop();
+        nowStr = textArea.value.split('\n').length;
+    }
+
+    let activeStrStr = '';
+
+    for (let val of activeStr) {
+        activeStrStr = activeStrStr + val;
+    }
+
+    textArea2.value = activeStrStr;
+
+    textArea2.scrollTop(textArea2[0].scrollHeight);
+})
+
+textArea2.value = activeStr;
