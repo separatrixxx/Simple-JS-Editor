@@ -23,18 +23,31 @@ body::-webkit-scrollbar-thumb {
     align-items: flex-start;
 }
 
-.div2 {
-    width: 100%;
-}
-
 #textarea {
-    width: 100%;
+    width: 96%;
     height: 87vh;
     margin-top: 10px;
     resize: vertical;
     padding: 10px;
     position: absolute;
+    right: 0;
+    z-index: 1;
+}
+
+#textarea2 {
+    width: 1%;
+    height: 87vh;
+    margin-top: 10px;
+    resize: none;
+    padding: 10px;
+    position: absolute;
     left: 0;
+    z-index: 2;
+    overflow: hidden;
+}
+
+#textarea2:focus {
+    outline: none;
 }
 
 #textarea.err {
