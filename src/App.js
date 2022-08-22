@@ -11,9 +11,9 @@ function App() {
         </div>
         <div className="flex flex-row w-full">
           <textarea id="textarea2" readOnly spellCheck="false" className="w-1/15 md:w-1/7 h-87/100 resize-none overflow-hidden
-          focus:outline-none bg-gray-200 p-2 text-sm font-thin text-end"></textarea>
+          focus:outline-none bg-gray-200 p-2 text-sm font-thin text-end tracking-wider"></textarea>
           <textarea id="textarea" spellCheck="false" className="w-1/85 md:w-1/93 h-87/100 resize-none focus:outline-none
-          bg-gray-100 p-2 text-sm font-thin text-gray-700"></textarea>
+          bg-gray-100 p-2 text-sm font-thin text-gray-700 tracking-wider"></textarea>
         </div>
       </div>
   );
