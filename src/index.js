@@ -116,15 +116,6 @@ textArea.addEventListener('keydown', function (e) {
     textArea2.scrollTop = textArea.scrollTop;
 })
 
-// let roma = {
-//     name: "Рома",
-//     sayHi: function() {
-//         alert("Привет, дружище!");
-//     }
-// };
-//
-// roma.sayHi(); // Привет, дружище!
-
 textArea.addEventListener('keyup', function (e) {
     if (textArea.value.split('\n').length < activeStr.length) {
         for (let i = activeStr.length; i > textArea.value.split('\n').length; i--) {
