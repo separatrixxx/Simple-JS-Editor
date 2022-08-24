@@ -100,6 +100,8 @@ textArea.addEventListener('keydown', function (e) {
             textArea.value = textArea.value.slice(0, a) + '\n' + textArea.value.slice(a);
             textArea.selectionStart = a;
             textArea.selectionEnd = a;
+
+            setTimeout(reformatFileAfterEnter, 1);
         }
 
         nowStr = textArea.value.split('\n').length + 1;
@@ -144,3 +146,18 @@ textArea.addEventListener('scroll', () => {
     console.log(textArea.scrollHeight)
     textArea2.scrollTop = textArea.scrollTop;
 })
+
+
+function reformatFileAfterEnter() {
+    nowStr = textArea.value.split('\n').length;
+    activeStr.push(String(activeStr.pop() - 1) + '\n');
+    activeStr.push(nowStr + '\n');
+
+    let activeStrStr = '';
+
+    for (let val of activeStr) {
+        activeStrStr = activeStrStr + val;
+    }
+
+    textArea2.value = activeStrStr;
+}
