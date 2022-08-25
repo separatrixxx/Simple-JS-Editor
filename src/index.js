@@ -24,7 +24,8 @@ document.getElementById('btn').addEventListener('click', () => {
         runCode();
     } catch (err) {
         textArea.classList.add('text-red-500');
-        alert(err);
+        document.getElementById('error_message_1').innerHTML = err;
+        document.getElementById('error_message_2').innerHTML = err;
     }
 })
 
@@ -143,7 +144,6 @@ textArea.addEventListener('keyup', function (e) {
 textArea2.value = '1';
 
 textArea.addEventListener('scroll', () => {
-    console.log(textArea.scrollHeight)
     textArea2.scrollTop = textArea.scrollTop;
 })
 
